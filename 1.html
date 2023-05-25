@@ -207,11 +207,6 @@
             }
             step++;
             
-            var oDiv = document.createElement('div');
-            var Image1 = document.createElement("img");   
-            oDiv.className = 'number';
-            oResult.appendChild(oDiv);
-            
             var dis = 1;
             var maxDis = 30;
             var mySet = setInterval(function(){
@@ -221,7 +216,6 @@
                         var d = document.getElementsByClassName('section')[i - 1];
                         var num = Math.floor(Math.random()*(arrName.length-1));
                         var res = arrName[num];
-                        oDiv.innerHTML = res; 
                         var name = Math.floor(num / 300) % 4 + 1;
                         var src = "./" + name.toString() + ".jpg";
                         var background = "url('" + src + "')";
@@ -238,16 +232,20 @@
                     return null;
                 }
                         
-                    for (var i = 1; i <= 10; i++) {
-                        var d = document.getElementsByClassName('section')[i - 1];
-                        var num = Math.floor(Math.random()*(arrName.length-1));
-                        var res = arrName[num];
-                        oDiv.innerHTML = res; 
-                        var name = Math.floor(num / 300) % 4 + 1;
-                        var src = "./" + name.toString() + ".jpg";
-                        var background = "url('" + src + "')";
-                        d.style.backgroundImage = background;
-                    }
+                for (var i = 1; i <= 10; i++) {
+                    var d = document.getElementsByClassName('section')[i - 1];
+                    var num = Math.floor(Math.random()*(arrName.length-1));
+                    var res = arrName[num];
+                    var name = Math.floor(num / 300) % 4 + 1;
+                    var src = "./" + name.toString() + ".jpg";
+                    var background = "url('" + src + "')";
+                    d.style.backgroundImage = background;
+
+                    var tag = document.createElement("p");
+                    var text = document.createTextNode(res);
+                    tag.appendChild(text);  
+                    d.appendChild(tag);
+                }
             },50);
         }
     </script>
